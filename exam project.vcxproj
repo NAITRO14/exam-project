@@ -39,6 +39,8 @@
     <QtInstall>6.10.1_msvc2022_64</QtInstall>
     <QtModules>core</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
+    <QtDeployLibDir>D:\Programs\Qt\6.10.1\msvc2022_64</QtDeployLibDir>
+    <QtPlugin>false</QtPlugin>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>6.10.1_msvc2022_64</QtInstall>
@@ -65,12 +67,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Qt\6.10.1\msvc2022_64\include\QtCore;C:\Qt\6.10.1\msvc2022_64\include\QtGui;C:\Qt\6.10.1\msvc2022_64\include\QtWidgets</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Programs\Qt\6.10.1\msvc2022_64\include\QtCore;D:\Programs\Qt\6.10.1\msvc2022_64\include\QtGui;D:\Programs\Qt\6.10.1\msvc2022_64\include\QtWidgets;D:\Programs\Qt\6.10.1\msvc2022_64\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Qt\6.10.1\msvc2022_64\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>Qt6Core.lib;Qt6Widgets.lib;Qt6Gui.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Programs\Qt\6.10.1\msvc2022_64\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">

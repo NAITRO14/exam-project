@@ -48,6 +48,11 @@ public:
 
 	}
 
+	void print()
+	{
+		cout << fname << " " << lname << " " << age << " " << sex << " " << ID << endl;
+	}
+
 	//GETTERS
 	int getID() const { return ID; }
 	int getAge() const { return age; }
@@ -60,7 +65,7 @@ public:
 	string getLname() const { return lname; }
 	string getCity() const { return city; }
 
-	vector<string> getInterests() const { return interests; }
+	vector<string>& getInterests() { return interests; }
 
 	//SETTERS
 	void setID(int _id) { ID = _id; }
@@ -72,6 +77,10 @@ public:
 	void setLogin(const string& _login) { login = _login; }
 	void setPassword(const string& _pass) { password = _pass; }
 	void setCity(const string& _city) { city = _city; }
+	void addInterests(vector<string> ints) 
+	{
+		for (auto& i : ints) interests.push_back(i);
+	}
 
 
 

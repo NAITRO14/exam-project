@@ -18,3 +18,5 @@ public:
 protected:
 	void resizeEvent(QResizeEvent* event) override;
 };
+
+void register_();

@@ -30,6 +30,7 @@ void regMenue::resizeEvent(QResizeEvent* event)
 
 	reg->move(width() * 0.34, height() * 0.57);
 	reg->setFixedSize(width() * 0.32, height() * 0.078);
+	connect(reg, &QPushButton::clicked, &register_);
 
 	back->move(width() * 0.035, height() * 0.863);
 	back->setFixedSize(width() * 0.16625, height() * 0.09);
@@ -39,4 +40,9 @@ void regMenue::resizeEvent(QResizeEvent* event)
 		});
 
 	QWidget::resizeEvent(event);
+}
+
+void register_()
+{
+	cout << "asd" << endl;
 }
