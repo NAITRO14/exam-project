@@ -27,6 +27,9 @@
     <Filter Include="managers">
       <UniqueIdentifier>{86856bf0-2d77-41f8-9818-e0bc26d7f710}</UniqueIdentifier>
     </Filter>
+    <Filter Include="widgets">
+      <UniqueIdentifier>{d5a73538-c0d5-4115-94aa-afab62bcb732}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -42,6 +45,15 @@
       <Filter>menues</Filter>
     </ClCompile>
     <ClCompile Include="menues\register_menue.cpp">
+      <Filter>menues</Filter>
+    </ClCompile>
+    <ClCompile Include="managers\dataManager.cpp">
+      <Filter>managers</Filter>
+    </ClCompile>
+    <ClCompile Include="widgets\alert.cpp">
+      <Filter>widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="menues\fillProfil_menue.cpp">
       <Filter>menues</Filter>
     </ClCompile>
   </ItemGroup>
@@ -64,6 +76,15 @@
       <Filter>menues</Filter>
     </QtMoc>
     <QtMoc Include="menues\register_menue.h">
+      <Filter>menues</Filter>
+    </QtMoc>
+    <QtMoc Include="managers\dataManager.h">
+      <Filter>managers</Filter>
+    </QtMoc>
+    <QtMoc Include="widgets\alert.h">
+      <Filter>widgets</Filter>
+    </QtMoc>
+    <QtMoc Include="menues\fillProfil_menue.h">
       <Filter>menues</Filter>
     </QtMoc>
   </ItemGroup>

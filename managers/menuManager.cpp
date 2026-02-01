@@ -28,5 +28,10 @@ void menuManager::resister()
 
 void menuManager::login()
 {
+	menues->setCurrentIndex(10);
+}
+
+void menuManager::fillProfile()
+{
 	menues->setCurrentIndex(2);
 }

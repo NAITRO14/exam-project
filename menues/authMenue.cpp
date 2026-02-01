@@ -1,6 +1,6 @@
 ﻿#include "authMenue.h"
 
-authMenue::authMenue(QWidget* parent)
+authMenue::authMenue(QWidget* parent) : QWidget(parent)
 {
 	reg = new QPushButton(this);
 	reg->setFont(QFont("Calibri", 24, QFont::Bold));

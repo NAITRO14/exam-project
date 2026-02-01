@@ -1,24 +1,25 @@
 ﻿#pragma once
 #include "core/BaseIncludes.h"
+#include "core/QtIncludes.h"
 
 class user
 {
 	static int total_users;
 	int ID;
 
-	string fname;
-	string lname;
+	QString fname;
+	QString lname;
 
 	int age;
 	bool sex;
 
-	string login;
-	string password;
+	QString login;
+	QString password;
 
-	string city;
-	vector<string> interests;
+	QString city;
+	QVector<QString> interests;
 public:
-	user(string fn, string ln, int _age, bool _sex, string _city, string _login, string _pass)
+	user(QString fn, QString ln, int _age, bool _sex, QString _city, QString _login, QString _pass)
 	{
 		fname = fn;
 		lname = ln;
@@ -31,8 +32,9 @@ public:
 		login = _login;
 		password = _pass;
 
+
 	}
-	user(user& u)
+	user(const user& u)
 	{
 		fname = u.fname;
 		lname = u.lname;
@@ -50,7 +52,8 @@ public:
 
 	void print()
 	{
-		cout << fname << " " << lname << " " << age << " " << sex << " " << ID << endl;
+		QTextStream out(stdout);
+		out << fname << " " << lname << " " << age << " " << sex << " " << ID << Qt::endl;
 	}
 
 	//GETTERS
@@ -58,29 +61,27 @@ public:
 	int getAge() const { return age; }
 	bool getSex() const { return sex; }
 
-	string getLogin() const { return login; }
-	string getPass() const { return password; }
+	QString getLogin() const { return login; }
+	QString getPass() const { return password; }
 
-	string getFname() const { return fname; }
-	string getLname() const { return lname; }
-	string getCity() const { return city; }
+	QString getFname() const { return fname; }
+	QString getLname() const { return lname; }
+	QString getCity() const { return city; }
 
-	vector<string>& getInterests() { return interests; }
+	QVector<QString>& getInterests() { return interests; }
 
 	//SETTERS
 	void setID(int _id) { ID = _id; }
 	void setAge(int _age) { age = _age; }
 	void setSex(bool _sex) { sex = _sex; }
 
-	void setFname(const string& _fname) { fname = _fname; }
-	void setLname(const string& _lname) { lname = _lname; }
-	void setLogin(const string& _login) { login = _login; }
-	void setPassword(const string& _pass) { password = _pass; }
-	void setCity(const string& _city) { city = _city; }
-	void addInterests(vector<string> ints) 
-	{
-		for (auto& i : ints) interests.push_back(i);
-	}
+	void setFname(const QString& _fname) { fname = _fname; }
+	void setLname(const QString& _lname) { lname = _lname; }
+	void setLogin(const QString& _login) { login = _login; }
+	void setPassword(const QString& _pass) { password = _pass; }
+	void setCity(const QString& _city) { city = _city; }
+
+	void addInterests(QVector<QString> ints) { for (auto& i : ints) interests.append(i); }
 
 
 

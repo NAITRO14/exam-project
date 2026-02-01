@@ -4,6 +4,8 @@
 #include "menues/authMenue.h"
 #include "managers/menuManager.h"
 #include "menues/register_menue.h"
+#include "managers/dataManager.h"
+#include "menues/fillProfil_menue.h"
 int user::total_users = 0;
 
 void create_base(map<int, user>& users)
@@ -53,74 +55,91 @@ void create_base(map<int, user>& users)
     users[20].addInterests({ "Йога", "Виноделие", "Путешествия" }); // ❌ Без пары
 
 }
-void check_base(map<int, user>& users)// ОСНОВНАЯ ИНФОРМАЦИЯ О ЛЮДЯХ И ИХ ИНТЕРЕСЫ ЗАПИСЫВАЮТСЯ В РАЗНЫЕ ФАЙЛЫ
+void check_base(map<int, user>& users)
 {
-    ifstream check("appData/users.txt");
-    if (!check)
-    {
-        check.close();
+    QFile checkFile("appData/users.txt");
+    if (!checkFile.exists()) {
+        // checkFile.close();  ❌ УБРАНО - файл не открыт!
         create_base(users);
 
-        ofstream f1("appData/users.txt");
-        if (!f1)
-        {
-            cerr << " Ошибка создания файла базы данных!" << endl;
-            exit(1);
-        }
-        ofstream f2("appData/users_interests.txt");
-        if (!f2)
-        {
-            cerr << " Ошибка создания файла базы данных!" << endl;
-            exit(1);
-        }
-
-        for (auto it = users.begin(); it != users.end(); ++it)
-        {
-            user tmp_user(it->second);
-            f1 << tmp_user.getFname() << " " << tmp_user.getLname() << " " << tmp_user.getSex() << " " << tmp_user.getAge() << " "
-                << tmp_user.getID() << " " << tmp_user.getCity() << " " << tmp_user.getLogin() << " " << tmp_user.getPass() << endl;
-        }
-        for (auto it = users.begin(); it != users.end(); ++it)
-        {
-            f2 << it->second.getID() << " ";
-            for (auto it2 : it->second.getInterests())
-            {
-                f2 << it2 << " ";
+        // Запись users.txt
+        QFile file1("appData/users.txt");
+        if (file1.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream out1(&file1);
+            for (auto it = users.begin(); it != users.end(); ++it) {
+                out1 << it->second.getFname() << " "
+                    << it->second.getLname() << " "
+                    << it->second.getSex() << " "
+                    << it->second.getAge() << " "
+                    << it->second.getID() << " "
+                    << it->second.getCity() << " "
+                    << it->second.getLogin() << " "
+                    << it->second.getPass() << "\n";
             }
-            f2 << endl;
+            file1.close();
         }
 
-        f1.close();
-        f2.close();
+        // Запись users_interests.txt
+        QFile file2("appData/users_interests.txt");
+        if (file2.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QTextStream out2(&file2);
+            for (auto it = users.begin(); it != users.end(); ++it) {
+                out2 << it->second.getID() << " ";
+                for (auto it2 : it->second.getInterests()) {
+                    out2 << it2 << " ";
+                }
+                out2 << "\n";
+            }
+            file2.close();
+        }
     }
-    else
-    {
-        
-        string fname, lname, city, pass, login;
-        int age, ID;
-        bool sex;
-        while (check >> fname >> lname >> sex >> age >> ID >> city >> login >> pass)
-        {
-            user tmp_user(fname, lname, age, sex, city, login, pass);
-            tmp_user.setID(ID);
+    else {
+        QFile file1("appData/users.txt");
+        if (file1.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QTextStream in1(&file1);
+            while (!in1.atEnd()) {
+                QString line = in1.readLine();
+                QStringList parts = line.split(" ", Qt::SkipEmptyParts);
 
-            tmp_user.print();
+                if (parts.size() >= 8) {
+                    QString fname = parts[0];
+                    QString lname = parts[1];
+                    bool sex = parts[2].toInt();
+                    int age = parts[3].toInt();
+                    int ID = parts[4].toInt();
+                    QString city = parts[5];
+                    QString login = parts[6];
+                    QString pass = parts[7];
 
-            users.emplace(tmp_user.getID(), tmp_user);
+                    user tmp_user(fname, lname, age, sex, city, login, pass);
+                    tmp_user.setID(ID);
+                    tmp_user.print();
+                    users.emplace(ID, tmp_user);
+                }
+            }
+            file1.close();
         }
 
-        vector<string>interests = {"", "", ""};
-        ifstream f("appData/users_interests.txt");
-        if (!f)
-        {
-            cerr << "Ошибка чтений файла интересов" << endl;
-            exit(1);
+        QFile file2("appData/users_interests.txt");
+        if (file2.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QTextStream in2(&file2);
+            while (!in2.atEnd()) {
+                QString line = in2.readLine();
+                QStringList parts = line.split(" ", Qt::SkipEmptyParts);
+
+                if (parts.size() >= 2 && users.find(parts[0].toInt()) != users.end()) {
+                    int ID = parts[0].toInt();
+                    QVector<QString> interests;
+                    for (int i = 1; i < parts.size(); ++i) {
+                        interests.append(parts[i]);
+                    }
+                    users[ID].addInterests(interests);
+                }
+            }
+            file2.close();
         }
-        while (f >> ID >> interests[0] >> interests[1] >> interests[2])
-        {
-            users.find(ID)->second.addInterests(interests);
-        }
-    }// имя -) фамилия -) возраст -) айди -) логин -) пароль
+    }
+    
 }
 void congigurate_app(QMainWindow* window)
 {
@@ -128,6 +147,7 @@ void congigurate_app(QMainWindow* window)
     window->setCentralWidget(menuManager::getManager().getStack());
     menuManager::getManager().add_menu(new authMenue(nullptr));
     menuManager::getManager().add_menu(new regMenue(nullptr));
+    menuManager::getManager().add_menu(new fillProfil_menue(nullptr));
 }
 
 int main(int argc, char *argv[])
@@ -137,6 +157,7 @@ int main(int argc, char *argv[])
 
     map<int, user> users;
     check_base(users);
+    dataManager::getManager().set_users(users);
 
     QApplication app(argc, argv);
     QMainWindow* window = new QMainWindow;

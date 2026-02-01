@@ -105,17 +105,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="managers\dataManager.cpp" />
     <ClCompile Include="managers\menuManager.cpp" />
     <ClCompile Include="menues\authMenue.cpp" />
+    <ClCompile Include="menues\fillProfil_menue.cpp" />
     <ClCompile Include="menues\register_menue.cpp" />
     <ClCompile Include="user_class.cpp" />
+    <ClCompile Include="widgets\alert.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\BaseIncludes.h" />
     <ClInclude Include="core\QtIncludes.h" />
+    <QtMoc Include="widgets\alert.h" />
     <QtMoc Include="managers\menuManager.h" />
     <QtMoc Include="menues\authMenue.h" />
     <QtMoc Include="menues\register_menue.h" />
+    <QtMoc Include="managers\dataManager.h" />
+    <QtMoc Include="menues\fillProfil_menue.h" />
     <ClInclude Include="user_class.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -22,6 +22,8 @@ public:
 	void resister();
 	void login();
 
+	void fillProfile();
+
 
 };
 
