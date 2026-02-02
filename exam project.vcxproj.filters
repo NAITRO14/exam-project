@@ -41,19 +41,25 @@
     <ClCompile Include="managers\menuManager.cpp">
       <Filter>managers</Filter>
     </ClCompile>
-    <ClCompile Include="menues\authMenue.cpp">
-      <Filter>menues</Filter>
-    </ClCompile>
-    <ClCompile Include="menues\register_menue.cpp">
-      <Filter>menues</Filter>
-    </ClCompile>
     <ClCompile Include="managers\dataManager.cpp">
       <Filter>managers</Filter>
     </ClCompile>
     <ClCompile Include="widgets\alert.cpp">
       <Filter>widgets</Filter>
     </ClCompile>
+    <ClCompile Include="menues\main_menu.cpp">
+      <Filter>menues</Filter>
+    </ClCompile>
+    <ClCompile Include="menues\partnersData_menu.cpp">
+      <Filter>menues</Filter>
+    </ClCompile>
+    <ClCompile Include="menues\authMenue.cpp">
+      <Filter>menues</Filter>
+    </ClCompile>
     <ClCompile Include="menues\fillProfil_menue.cpp">
+      <Filter>menues</Filter>
+    </ClCompile>
+    <ClCompile Include="menues\register_menue.cpp">
       <Filter>menues</Filter>
     </ClCompile>
   </ItemGroup>
@@ -72,19 +78,25 @@
     <QtMoc Include="managers\menuManager.h">
       <Filter>managers</Filter>
     </QtMoc>
-    <QtMoc Include="menues\authMenue.h">
-      <Filter>menues</Filter>
-    </QtMoc>
-    <QtMoc Include="menues\register_menue.h">
-      <Filter>menues</Filter>
-    </QtMoc>
     <QtMoc Include="managers\dataManager.h">
       <Filter>managers</Filter>
     </QtMoc>
     <QtMoc Include="widgets\alert.h">
       <Filter>widgets</Filter>
     </QtMoc>
+    <QtMoc Include="menues\main_menu.h">
+      <Filter>menues</Filter>
+    </QtMoc>
+    <QtMoc Include="menues\partnersData_menu.h">
+      <Filter>menues</Filter>
+    </QtMoc>
+    <QtMoc Include="menues\authMenue.h">
+      <Filter>menues</Filter>
+    </QtMoc>
     <QtMoc Include="menues\fillProfil_menue.h">
+      <Filter>menues</Filter>
+    </QtMoc>
+    <QtMoc Include="menues\register_menue.h">
       <Filter>menues</Filter>
     </QtMoc>
   </ItemGroup>

@@ -59,6 +59,8 @@ fillProfil_menue::fillProfil_menue(QWidget* parent)
 		
 		new_user(fname_line->text(), lname_line->text(), 
 			a, s, city->text(), int1->text(), int2->text(), int3->text());
+
+		menuManager::getManager().main_menu();
 		});
 
 	back = new QPushButton(this);
@@ -129,11 +131,7 @@ void fillProfil_menue::new_user(QString fn, QString ln, int a, bool s, QString c
 
 	user tmp_user(fn, ln, a, s, c, log, pas);
 	tmp_user.addInterests(tmp_int);
-	
-
-	
-	
-	
+		
 	dataManager::getManager().add_new_user(tmp_user);
 }
 

@@ -6,6 +6,10 @@
 #include "menues/register_menue.h"
 #include "managers/dataManager.h"
 #include "menues/fillProfil_menue.h"
+#include "menues/main_menu.h"
+#include "menues/partnersData_menu.h"
+
+
 int user::total_users = 0;
 
 void congigurate_app(QMainWindow* window)
@@ -15,6 +19,9 @@ void congigurate_app(QMainWindow* window)
     menuManager::getManager().add_menu(new authMenue(nullptr));
     menuManager::getManager().add_menu(new regMenue(nullptr));
     menuManager::getManager().add_menu(new fillProfil_menue(nullptr));
+    menuManager::getManager().add_menu(new main_menu(nullptr));
+    menuManager::getManager().add_menu(new partnersData_menu(nullptr));
+
 }
 
 int main(int argc, char *argv[])
@@ -23,12 +30,15 @@ int main(int argc, char *argv[])
     SetConsoleCP(CP_UTF8);
 
     dataManager::getManager().check_base();
+    
 
     QApplication app(argc, argv);
     QMainWindow* window = new QMainWindow;
-
-    congigurate_app(window);
    
+    congigurate_app(window);
+
+    menuManager::getManager().main_menu();
+
     window->show();
     return app.exec();
 }

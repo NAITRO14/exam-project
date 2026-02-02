@@ -21,6 +21,8 @@ public:
 	void auth_menue();
 	void resister();
 	void login();
+	void main_menu();
+	void partner_form();
 
 	void fillProfile();
 
