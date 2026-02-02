@@ -2,6 +2,8 @@
 #include "core/QtIncludes.h"
 #include "core/BaseIncludes.h"
 #include "managers/menuManager.h"
+#include "managers/dataManager.h"
+#include "user_class.h"
 
 class fillProfil_menue : public QWidget
 {
@@ -24,7 +26,9 @@ private:
 
 public:
 	fillProfil_menue(QWidget* parent = nullptr);
+
 	void clear_fields();
+	void new_user(QString fn, QString ln, int a, bool s, QString c, QString i1, QString i2, QString i3);
 
 protected:
 	void resizeEvent(QResizeEvent* event) override;

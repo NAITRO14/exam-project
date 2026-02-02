@@ -80,9 +80,11 @@ bool regMenue::register_(QString l, QString p)
 		return false;
 	}
 
+	dataManager::getManager().save_log(l);
+	dataManager::getManager().save_pas(p);
+
 	menuManager::getManager().fillProfile();
 
-	cout << "Регистрация прошла успешно" << endl;
 	return true;
 }
 
