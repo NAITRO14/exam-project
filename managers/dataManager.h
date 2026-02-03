@@ -10,6 +10,7 @@ class dataManager : QObject
 private:
 	map<int, user>* users;
 	QString tmp_pas, tmp_login; // временно хранят данные о регистрируемом пользователе
+    user current_user;
 
 	dataManager() : users(new map<int, user>()), tmp_pas("none"), tmp_login("none") {}
 	dataManager(const dataManager&) = delete;
@@ -62,7 +63,9 @@ public:// фунции работы с данными
     void create_base();
     void check_base();
     void updateData_inFile();
+    void set_current_user(user& u);
 
+    bool try_to_log_in(QString l, QString pass);
 
 	
 

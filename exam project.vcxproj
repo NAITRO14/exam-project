@@ -109,6 +109,7 @@
     <ClCompile Include="managers\menuManager.cpp" />
     <ClCompile Include="menues\authMenue.cpp" />
     <ClCompile Include="menues\fillProfil_menue.cpp" />
+    <ClCompile Include="menues\login_menue.cpp" />
     <ClCompile Include="menues\main_menu.cpp" />
     <ClCompile Include="menues\partnersData_menu.cpp" />
     <ClCompile Include="menues\register_menue.cpp" />
@@ -126,6 +127,7 @@
     <QtMoc Include="menues\authMenue.h" />
     <QtMoc Include="menues\fillProfil_menue.h" />
     <QtMoc Include="menues\register_menue.h" />
+    <QtMoc Include="menues\login_menue.h" />
     <ClInclude Include="user_class.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

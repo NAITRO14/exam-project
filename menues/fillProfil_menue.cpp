@@ -133,6 +133,7 @@ void fillProfil_menue::new_user(QString fn, QString ln, int a, bool s, QString c
 	tmp_user.addInterests(tmp_int);
 		
 	dataManager::getManager().add_new_user(tmp_user);
+	dataManager::getManager().set_current_user(tmp_user);
 }
 
 void fillProfil_menue::resizeEvent(QResizeEvent* event)

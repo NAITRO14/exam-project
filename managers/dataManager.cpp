@@ -116,9 +116,9 @@ void dataManager::check_base()
                     << it->second.getCity() << " "
                     << it->second.getLogin() << " "
                     << it->second.getPass() << "\n";
-            }
-            file1.close();
+            } 
         }
+        file1.close();
 
         // Запись users_interests.txt
         QFile file2(interestsPath);
@@ -131,8 +131,8 @@ void dataManager::check_base()
                 }
                 out2 << "\n";
             }
-            file2.close();
         }
+        file2.close();
     }
     else {
         users->clear();
@@ -161,8 +161,8 @@ void dataManager::check_base()
                     (*users)[ID] = tmp_user;
                 }
             }
-            file1.close();
         }
+        file1.close();
 
         // Чтение users_interests.txt
         QFile file2(interestsPath);
@@ -183,8 +183,8 @@ void dataManager::check_base()
                     }
                 }
             }
-            file2.close();
         }
+        file2.close();
     }
 }
 
@@ -220,6 +220,31 @@ void dataManager::updateData_inFile()
         }
         file2.close();
     }
+}
+
+void dataManager::set_current_user(user& u)
+{
+    current_user = u;
+    u.print();
+    
+    current_user.print();
+
+    /*
+     QTextStream out(stdout);
+    for (QString it : current_user.getInterests())
+    {
+        out << it << " ";
+    }
+    cout << endl;*/
+}
+
+bool dataManager::try_to_log_in(QString l, QString pass)
+{
+    for (auto it = users->begin(); it != users->end(); ++it)
+    {
+        
+    }
+    return false;
 }
 
 

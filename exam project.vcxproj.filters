@@ -62,6 +62,9 @@
     <ClCompile Include="menues\register_menue.cpp">
       <Filter>menues</Filter>
     </ClCompile>
+    <ClCompile Include="menues\login_menue.cpp">
+      <Filter>menues</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="user_class.h">
@@ -97,6 +100,9 @@
       <Filter>menues</Filter>
     </QtMoc>
     <QtMoc Include="menues\register_menue.h">
+      <Filter>menues</Filter>
+    </QtMoc>
+    <QtMoc Include="menues\login_menue.h">
       <Filter>menues</Filter>
     </QtMoc>
   </ItemGroup>

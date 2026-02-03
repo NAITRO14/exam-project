@@ -16,12 +16,12 @@ void congigurate_app(QMainWindow* window)
 {
     window->setMinimumSize(800, 600);
     window->setCentralWidget(menuManager::getManager().getStack());
+
     menuManager::getManager().add_menu(new authMenue(nullptr));
     menuManager::getManager().add_menu(new regMenue(nullptr));
     menuManager::getManager().add_menu(new fillProfil_menue(nullptr));
     menuManager::getManager().add_menu(new main_menu(nullptr));
     menuManager::getManager().add_menu(new partnersData_menu(nullptr));
-
 }
 
 int main(int argc, char *argv[])
@@ -31,13 +31,10 @@ int main(int argc, char *argv[])
 
     dataManager::getManager().check_base();
     
-
     QApplication app(argc, argv);
     QMainWindow* window = new QMainWindow;
    
     congigurate_app(window);
-
-    menuManager::getManager().main_menu();
 
     window->show();
     return app.exec();
