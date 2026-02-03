@@ -224,10 +224,7 @@ void dataManager::updateData_inFile()
 
 void dataManager::set_current_user(user& u)
 {
-    current_user = u;
-    u.print();
-    
-    current_user.print();
+    current_user = &u;
 
     /*
      QTextStream out(stdout);
@@ -238,11 +235,33 @@ void dataManager::set_current_user(user& u)
     cout << endl;*/
 }
 
+void dataManager::update_preferences(int age, int sex, QString city)
+{
+    (*current_user).setPAge(age);
+    (*current_user).setPSex(sex);
+
+    if (city.isEmpty())city = "none";
+    (*current_user).setPCity(city);
+}
+
+void dataManager::print_cur_user()
+{
+    current_user->print_int();
+}
+
+
 bool dataManager::try_to_log_in(QString l, QString pass)
 {
     for (auto it = users->begin(); it != users->end(); ++it)
     {
-        
+        if (it->second.getLogin() == l)
+        {
+            if (it->second.getPass() == pass)
+            {
+                set_current_user(it->second);
+                return true;
+            }
+        }
     }
     return false;
 }

@@ -60,7 +60,7 @@ fillProfil_menue::fillProfil_menue(QWidget* parent)
 		new_user(fname_line->text(), lname_line->text(), 
 			a, s, city->text(), int1->text(), int2->text(), int3->text());
 
-		menuManager::getManager().main_menu();
+		menuManager::getManager().auth_menue();
 		});
 
 	back = new QPushButton(this);
@@ -133,7 +133,6 @@ void fillProfil_menue::new_user(QString fn, QString ln, int a, bool s, QString c
 	tmp_user.addInterests(tmp_int);
 		
 	dataManager::getManager().add_new_user(tmp_user);
-	dataManager::getManager().set_current_user(tmp_user);
 }
 
 void fillProfil_menue::resizeEvent(QResizeEvent* event)

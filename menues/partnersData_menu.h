@@ -2,6 +2,7 @@
 #include "core/QtIncludes.h"
 #include "core/BaseIncludes.h"
 #include "managers/menuManager.h"
+#include "managers/dataManager.h"
 
 class partnersData_menu : public QWidget
 {

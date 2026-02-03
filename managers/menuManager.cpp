@@ -28,7 +28,7 @@ void menuManager::resister()
 
 void menuManager::login()
 {
-	menues->setCurrentIndex(10);
+	menues->setCurrentIndex(5);
 }
 
 void menuManager::main_menu()

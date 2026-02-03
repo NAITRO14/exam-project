@@ -17,6 +17,59 @@ partnersData_menu::partnersData_menu(QWidget* parent) : QWidget(parent)
 	fixate = new QPushButton(this);
 	fixate->setText("Зафиксировать");
 	fixate->setFont(QFont("Calibri", 22, QFont::Bold));
+	connect(fixate, &QPushButton::clicked, [this]()
+		{
+			bool check_a;
+			int a = age->text().toInt(&check_a);
+			
+
+			if (!check_a)
+			{
+				if (age->text().isEmpty())
+				{
+					a = -1;
+				}
+				else
+				{
+					cerr << "Ошибка при вводе возраста!" << endl;
+					QMessageBox::critical(this, "Ошибка!", "Проверье поле возраста, допускаются только цифры.");
+					age->clear();
+					return;
+				}
+				
+			}
+			else
+			{
+				if(a == -1)
+				if (a < 14 or a > 100)
+				{
+					cerr << "Некорректный возраст!" << endl;
+					QMessageBox::critical(this, "Ошибка!", "В таком возрасте нельзя зарегистрироваться.");
+					age->clear();
+					return;
+				}
+			}
+
+
+			int s = 0;
+			if (sex->text().toLower() == "муж" or sex->text().toLower() == "жен" or sex->text().isEmpty())
+			{
+				if (sex->text().toLower() == "муж")s = 0;
+				if (sex->text().toLower() == "жен")s = 1;
+				if (sex->text().isEmpty())s = 2;
+			}
+			else
+			{
+				cerr << "Некорректный пол!" << endl;
+				QMessageBox::critical(this, "Ошибка!", "Пол введен неверно! Сравнитесь с примером.");
+				sex->clear();
+				return;
+			}
+
+
+			dataManager::getManager().update_preferences(a, s, city->text());
+			dataManager::getManager().print_toConsole();
+		});
 
 	back = new QPushButton(this);
 	back->setText("Назад");

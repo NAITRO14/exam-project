@@ -22,7 +22,7 @@ class user
 
 	//ДАННЫЕ ПАРТНЕРА
 	int p_age;
-	bool p_sex;
+	int p_sex;
 	QString p_city;
 
 public:
@@ -40,7 +40,7 @@ public:
 		password = _pass;
 
 		p_age = -1;
-		p_sex = 0;
+		p_sex = 2;
 		p_city = "none";
 
 	}
@@ -56,7 +56,7 @@ public:
 		ID = u.ID;
 
 		p_age = -1;
-		p_sex = 0;
+		p_sex = 2;
 		p_city = "none";
 	}
 	user()
@@ -67,7 +67,21 @@ public:
 	void print()
 	{
 		QTextStream out(stdout);
-		out << fname << " " << lname << " " << age << " " << sex << " " << ID << Qt::endl;
+		out << "Имя: " << fname <<  " |Фамилия: " << lname << " |Возраст: " << age << " |Пол: " << sex << " |Логин: " << login << " |Пароль: " << password << " |Интерес1: " << Qt::endl;
+	}
+	void print_partner()
+	{
+		QTextStream out(stdout);
+		out << "Пол: " << p_sex << " |Возраст: " << p_age << " |Город: " << p_city << Qt::endl;
+	}
+	void print_int()
+	{
+		QTextStream out(stdout);
+		for (QString it : interests)
+		{
+			out << it << " ";
+		}
+		cout << endl;
 	}
 
 	//GETTERS
@@ -102,8 +116,8 @@ public:
 	void addInterests(QVector<QString> ints) { for (auto& i : ints) interests.append(i); }
 
 	void setPAge(int age) { p_age = age; }
-	void setPSex(bool sex) { p_sex = sex; }
-	void setPCity(const QString& city) { p_city = city; }
+	void setPSex(int sex) { p_sex = sex; }
+	void setPCity(const QString _city) { p_city = _city; }
 	
 };
 

@@ -32,14 +32,6 @@ regMenue::regMenue(QWidget* parent) : QWidget(parent)
 			clear_fields();
 		});
 
-	cout << endl;
-	map<int, user> us = dataManager::getManager().get_users();
-	for (auto it = us.begin(); it != us.end(); ++it)
-	{
-		QTextStream out(stdout);
-		out << it->second.getFname() << " " << it->second.getLname() << Qt::endl;
-	}
-
 	//ALERTS
 	login_busy = new ErrorFrame(this);
 	login_busy->setText("Логин уже занят!");

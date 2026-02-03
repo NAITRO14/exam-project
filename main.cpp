@@ -8,6 +8,7 @@
 #include "menues/fillProfil_menue.h"
 #include "menues/main_menu.h"
 #include "menues/partnersData_menu.h"
+#include "menues/login_menue.h"
 
 
 int user::total_users = 0;
@@ -22,6 +23,7 @@ void congigurate_app(QMainWindow* window)
     menuManager::getManager().add_menu(new fillProfil_menue(nullptr));
     menuManager::getManager().add_menu(new main_menu(nullptr));
     menuManager::getManager().add_menu(new partnersData_menu(nullptr));
+    menuManager::getManager().add_menu(new login_menue(nullptr));
 }
 
 int main(int argc, char *argv[])

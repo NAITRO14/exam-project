@@ -11,7 +11,7 @@ login_menue::login_menue(QWidget* parent) : QWidget(parent)
 	user_pass->setFont(QFont("Calibri", 20, QFont::Bold));
 
 	log_in = new QPushButton(this);
-	log_in->setText("Зарегистрироваться");
+	log_in->setText("Войти");
 	log_in->setFont(QFont("Calibri", 18, QFont::Bold));
 	connect(log_in, &QPushButton::clicked, [this]()
 		{
@@ -30,13 +30,8 @@ login_menue::login_menue(QWidget* parent) : QWidget(parent)
 			clear_fields();
 		});
 
-	cout << endl;
-	map<int, user> us = dataManager::getManager().get_users();
-	for (auto it = us.begin(); it != us.end(); ++it)
-	{
-		QTextStream out(stdout);
-		out << it->second.getFname() << " " << it->second.getLname() << Qt::endl;
-	}
+
+	
 
 	//ALERTS
 	incorrect_input = new ErrorFrame(this);
@@ -49,18 +44,13 @@ login_menue::login_menue(QWidget* parent) : QWidget(parent)
 bool login_menue::login(QString l, QString p)
 {
 	
-	if (l.isEmpty() or l.size() < 3)
+	if (!dataManager::getManager().try_to_log_in(l, p))
 	{
-		cout << "Слишком короткий логин" << endl;
 		incorrect_input->show();
 		QTimer::singleShot(2000, [e = incorrect_input]() { e->hide(); });
 		return false;
 	}
-
-	dataManager::getManager().save_log(l);
-	dataManager::getManager().save_pas(p);
-
-	menuManager::getManager().fillProfile();
+	menuManager::getManager().main_menu();
 
 	return true;
 }
