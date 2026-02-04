@@ -2,6 +2,8 @@
 #include "core/QtIncludes.h"
 #include "core/BaseIncludes.h"
 #include "managers/menuManager.h"
+#include "managers/dataManager.h"
+
 
 class main_menu : public QWidget
 {

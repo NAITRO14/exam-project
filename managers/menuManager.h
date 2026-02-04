@@ -8,7 +8,6 @@ class menuManager : QObject
 private:
 	QStackedWidget* menues;
 	menuManager() : menues(new QStackedWidget()) {};
-	menuManager(const menuManager&) = delete;
 
 public:
 	static menuManager& getManager();
@@ -23,8 +22,10 @@ public:
 	void login();
 	void main_menu();
 	void partner_form();
+	void result_men();
 
 	void fillProfile();
+
 
 
 };

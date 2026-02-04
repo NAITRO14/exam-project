@@ -5,6 +5,21 @@ main_menu::main_menu(QWidget* parent) : QWidget(parent)
 	find = new QPushButton(this);
 	find->setText("Найти партнера");
 	find->setFont(QFont("Calibri", 20, QFont::Bold));
+	connect(find, &QPushButton::clicked, []()
+		{
+			user* cur = dataManager::getManager().get_current_user();
+			user* best = dataManager::getManager().find_best_partner(*cur);
+
+			if (best == nullptr)
+			{
+				cout << "Партнер не найден" << endl;
+			}
+			cout << "=====================" << endl;
+			best->print();
+			best->print_int();
+			cout << "=====================" << endl;
+
+		});
 
 	fill = new QPushButton(this);
 	fill->setText("Анкета партнера");
@@ -39,4 +54,6 @@ void main_menu::resizeEvent(QResizeEvent* event)
 
 	quit->move(width() * 0.05, height() * 0.6167);
 	quit->setFixedSize(width() * 0.3125, height() * 0.083);
+
+	QWidget::resizeEvent(event);
 }

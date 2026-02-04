@@ -13,6 +13,7 @@
 #include <qmessagebox.h>
 #include <qlabel.h>
 #include <qtimer.h>
+#include <qscrollarea.h>
 
 
 

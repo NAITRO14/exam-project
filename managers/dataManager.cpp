@@ -36,7 +36,7 @@ bool dataManager::check_login(QString l)
 void dataManager::add_new_user(user& u)
 {
 	users->insert(make_pair(u.getID(), u));
-    (*users)[users->size()].addInterests(u.getInterests());
+    (*users)[u.getID()].addInterests(u.getInterests());
     updateData_inFile();
 }
 
@@ -249,6 +249,49 @@ void dataManager::print_cur_user()
     current_user->print_int();
 }
 
+user* dataManager::find_best_partner(user& u)
+{
+    user* best_partner = nullptr;
+    short coincidences = 0;
+    int u_id = u.getID();
+
+    for (auto it = users->begin(); it != users->end(); ++it)
+    {
+        if (it->first == u_id) continue;
+
+        const user& candidate = it->second;
+
+        if (u.getPSex() != 2 && u.getPSex() != static_cast<int>(candidate.getSex()))
+        {
+            continue;
+        }
+
+        if (u.getPAge() != -1 && qAbs(u.getPAge() - candidate.getAge()) > 5)
+        {
+            continue;
+        }
+
+        if (u.getPCity() != "none" && u.getPCity() != candidate.getPCity())
+        {
+            continue;
+        }
+
+        short cur_coi = 0;
+        const auto& interests1 = u.getInterests();
+        const auto& interests2 = candidate.getInterests();
+
+        QSet<QString> set1(interests1.begin(), interests1.end());
+        for (const QString& interest : interests2) {
+            if (set1.contains(interest)) cur_coi++;
+        }
+
+        if (cur_coi > coincidences) {
+            best_partner = const_cast<user*>(&candidate);
+            coincidences = cur_coi;
+        }
+    }
+    return best_partner;
+}
 
 bool dataManager::try_to_log_in(QString l, QString pass)
 {

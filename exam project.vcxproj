@@ -68,11 +68,11 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PreprocessorDefinitions>QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\Programs\Qt\6.10.1\msvc2022_64\include\QtCore;D:\Programs\Qt\6.10.1\msvc2022_64\include\QtGui;D:\Programs\Qt\6.10.1\msvc2022_64\include\QtWidgets;D:\Programs\Qt\6.10.1\msvc2022_64\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Qt\6.10.1\msvc2022_64\include\QtGui;C:\Qt\6.10.1\msvc2022_64\include\QtWidgets;C:\Qt\6.10.1\msvc2022_64\include\QtCore;C:\Qt\6.10.1\msvc2022_64\include;D:\Programs\Qt\6.10.1\msvc2022_64\include\QtCore;D:\Programs\Qt\6.10.1\msvc2022_64\include\QtGui;D:\Programs\Qt\6.10.1\msvc2022_64\include\QtWidgets;D:\Programs\Qt\6.10.1\msvc2022_64\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Qt6Core.lib;Qt6Widgets.lib;Qt6Gui.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\Programs\Qt\6.10.1\msvc2022_64\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Qt\6.10.1\msvc2022_64\lib;D:\Programs\Qt\6.10.1\msvc2022_64\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -113,6 +113,7 @@
     <ClCompile Include="menues\main_menu.cpp" />
     <ClCompile Include="menues\partnersData_menu.cpp" />
     <ClCompile Include="menues\register_menue.cpp" />
+    <ClCompile Include="result_menu.cpp" />
     <ClCompile Include="user_class.cpp" />
     <ClCompile Include="widgets\alert.cpp" />
   </ItemGroup>
@@ -128,6 +129,7 @@
     <QtMoc Include="menues\fillProfil_menue.h" />
     <QtMoc Include="menues\register_menue.h" />
     <QtMoc Include="menues\login_menue.h" />
+    <QtMoc Include="result_menu.h" />
     <ClInclude Include="user_class.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

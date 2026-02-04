@@ -67,7 +67,7 @@ public:
 	void print()
 	{
 		QTextStream out(stdout);
-		out << "Имя: " << fname <<  " |Фамилия: " << lname << " |Возраст: " << age << " |Пол: " << sex << " |Логин: " << login << " |Пароль: " << password << " |Интерес1: " << Qt::endl;
+		out << "Имя: " << fname <<  " |Фамилия: " << lname << " |Возраст: " << age << " |Пол: " << sex << " |Логин: " << login << " |Пароль: " << password << Qt::endl;
 	}
 	void print_partner()
 	{
@@ -81,7 +81,7 @@ public:
 		{
 			out << it << " ";
 		}
-		cout << endl;
+		out << Qt::endl;
 	}
 
 	//GETTERS
@@ -96,10 +96,10 @@ public:
 	QString getLname() const { return lname; }
 	QString getCity() const { return city; }
 
-	QVector<QString>& getInterests() { return interests; }
+	QVector<QString> getInterests() const { return interests; }
 
 	int getPAge() const { return p_age; }
-	bool getPSex() const { return p_sex; }
+	int getPSex() const { return p_sex; }
 	QString getPCity() const { return p_city; }
 
 	//SETTERS

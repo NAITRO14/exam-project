@@ -41,6 +41,11 @@ void menuManager::partner_form()
 	menues->setCurrentIndex(4);
 }
 
+void menuManager::result_men()
+{
+	menues->setCurrentIndex(6);
+}
+
 void menuManager::fillProfile()
 {
 	menues->setCurrentIndex(2);

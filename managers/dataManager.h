@@ -11,12 +11,14 @@ private:
 	map<int, user>* users;
 	QString tmp_pas, tmp_login; // временно хранят данные о регистрируемом пользователе
     user* current_user;
+    user* best_partner;
 
 	dataManager() : users(new map<int, user>()), tmp_pas("none"), tmp_login("none") {}
 	dataManager(const dataManager&) = delete;
 
 public:
 	static dataManager& getManager();
+
 	//GETTERS
 	map<int, user> get_users();
 
@@ -28,10 +30,9 @@ public:
     {
         return tmp_pas;
     }
-
-    int get_size_users()
+    user* get_current_user()
     {
-        return users->size();
+        return current_user;
     }
 
 	//SETTERS
@@ -68,6 +69,7 @@ public:// фунции работы с данными
     void set_current_user(user& u);
     void update_preferences(int age, int sex, QString city);
     void print_cur_user();
+    user* find_best_partner(user& u);
 
     bool try_to_log_in(QString l, QString pass);
 
