@@ -261,6 +261,7 @@ user* dataManager::find_best_partner(user& u)
 
         const user& candidate = it->second;
 
+        //текущий -> кандидат
         if (u.getPSex() != 2 && u.getPSex() != static_cast<int>(candidate.getSex()))
         {
             continue;
@@ -272,6 +273,22 @@ user* dataManager::find_best_partner(user& u)
         }
 
         if (u.getPCity() != "none" && u.getPCity() != candidate.getPCity())
+        {
+            continue;
+        }
+
+        //кандидат -> текущий
+        if (candidate.getPSex() != 2 && candidate.getPSex() != static_cast<int>(u.getSex()))
+        {
+            continue;
+        }
+
+        if (candidate.getPAge() != -1 && qAbs(candidate.getPAge() - u.getAge()) > 5)
+        {
+            continue;
+        }
+
+        if (candidate.getPCity() != "none" && candidate.getPCity() != u.getPCity())
         {
             continue;
         }

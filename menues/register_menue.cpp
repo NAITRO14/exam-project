@@ -1,7 +1,5 @@
 ﻿#include "register_menue.h"
 
-
-
 regMenue::regMenue(QWidget* parent) : QWidget(parent)
 {
 	user_login = new QLineEdit(this);

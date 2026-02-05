@@ -7,12 +7,16 @@ main_menu::main_menu(QWidget* parent) : QWidget(parent)
 	find->setFont(QFont("Calibri", 20, QFont::Bold));
 	connect(find, &QPushButton::clicked, []()
 		{
+			system("cls");
 			user* cur = dataManager::getManager().get_current_user();
 			user* best = dataManager::getManager().find_best_partner(*cur);
 
 			if (best == nullptr)
 			{
+				cout << "=====================" << endl;
 				cout << "Партнер не найден" << endl;
+				cout << "=====================" << endl;
+				return;
 			}
 			cout << "=====================" << endl;
 			best->print();
